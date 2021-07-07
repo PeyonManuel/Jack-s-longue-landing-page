@@ -1,3 +1,31 @@
+@font-face {
+  font-family: 'Imprint';
+  src: url(/src/fonts/imprint-mt-std-shadow.otf);
+}
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem */
+  height: 100%;
+  width: 300vw;
+  overflow: hidden;
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 85%;
+  }
+}
+@media (min-width: 3840px) {
+  html {
+    font-size: 125%;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,8 +34,330 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+main {
+  display: flex;
+  flex-direction: row;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #11171a;
+}
+
+.main-parallax {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+.main-parallax:nth-child(1) {
+  perspective: 1rem;
+}
+.main-parallax:nth-child(2) {
+  perspective: 0.6rem;
+}
+.main-parallax:nth-child(3) {
+  perspective: 0.6rem;
+}
+
+/* common */
+h1 {
+  color: #e7b051;
+  font-size: 5.5rem;
+  font-family: 'Imprint';
+  text-align: center;
+  width: 100%;
+}
+h2 {
+  color: #e7b051;
+  font-size: 4rem;
+  font-family: 'Imprint';
+}
+h3 {
+  color: white;
+  font-size: 2.4rem;
+  font-family: 'Otomanopee One', sans-serif;
+  margin: 1rem 0;
+}
+p {
+  color: white;
+  font-family: 'Otomanopee One', sans-serif;
+  font-size: 1.6rem;
+}
+h6 {
+  margin: 1rem 0;
+}
+
+@media (max-width: 330px) {
+  h2 {
+    font-size: 10vw;
+  }
+}
+
+/* parallax */
+
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.section.about {
+  min-height: 60vh;
+}
+
+.static-one {
+  background-color: #feceab;
+}
+
+.static-two {
+  height: 100vh;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 99.9%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.parallax {
+  min-height: 30vh;
+}
+.parallax::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  transform: translateZ(-1px) scale(1.7);
+  z-index: -1;
+}
+.parallax-one::after {
+  background-position: center;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url('/src/images/4.jpg');
+  background-size: cover;
+  filter: blur(3px);
+}
+.parallax-two::after {
+  background-position: center;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url('/src/images/5.jpg');
+  background-size: cover;
+}
+.parallax-three::after {
+  background-position: center;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url('/src/images/6.jpg');
+  background-size: cover;
+  min-height: 25vh;
+  filter: blur(1px);
+}
+/* common css */
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.justify-space-around {
+  display: flex;
+  justify-content: space-around;
+}
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* about us header */
+
+.jacks-buttons button {
+  border: none;
+  padding: 1rem;
+  color: black;
+  background: none;
+  font-weight: bold;
+  font-size: 3rem;
+  font-family: 'Imprint';
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0.2rem;
+}
+.jacks-buttons button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* jacks details */
+
+.jacks-logo {
+  font-family: 'Imprint';
+}
+.jacks-logo div {
+  margin-top: 1rem;
+}
+.jacks-logo span {
+  margin-left: 1rem;
+  font-size: 3rem;
+}
+.jacks-logo img {
+  width: 40rem;
+  max-width: 100vw;
+}
+
+.jacks-details {
+  min-height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)),
+    url('/src/images/dark_wood.jpg');
+}
+
+.jacks-details section {
+  max-width: 120rem;
+  width: 100vw;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* food */
+
+.card-types {
+  width: 48%;
+}
+
+.card-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.food-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.food-container.reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.food-details p {
+  font-size: 1.8rem;
+  font-style: italic;
+  word-wrap: break-word;
+}
+
+.food-img-container {
+  width: 20rem;
+  min-width: 25%;
+  margin: 0 1.5rem;
+}
+.food-img-container img {
+  width: 100%;
+}
+
+@media (max-width: 415px) {
+  .card-types {
+    width: 100%;
+  }
+  .food-container {
+    flex-direction: column;
+  }
+  .food-details {
+    width: 95%;
+  }
+  .food-img-container {
+    width: 95%;
+  }
+}
+
+/* Position buttons */
+
+.position-buttons {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.position-buttons button {
+  margin-right: 1.5rem;
+  height: 1.8rem;
+  width: 1.8rem;
+  border-radius: 50%;
+  border: 0.2rem solid black;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.position-buttons button:hover::after {
+  content: '';
+  height: 2rem;
+  background-color: rgb(27, 27, 27);
+  position: absolute;
+  top: -3.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0.2rem;
+  color: white;
+  padding: 0.7rem 0.7rem 0.2rem;
+}
+.position-buttons button:hover::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 0.5rem solid rgb(27, 27, 27);
+  position: absolute;
+  top: -0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.position-buttons button:nth-child(1):hover::after {
+  content: 'Cafetería';
+}
+.position-buttons button:nth-child(2):hover::after {
+  content: 'About';
+}
+.position-buttons button:nth-child(3):hover::after {
+  content: 'Restaurant';
 }

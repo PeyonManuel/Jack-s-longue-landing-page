@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import Cafeteria from './Screens/Cafeteria';
+import AboutUs from './Screens/AboutUs';
+import PositionButtons from './PositionButtons';
+import Restaurant from './Screens/Restaurant';
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(window.screen.width, 0);
+    document.querySelector('html').style.scrollBehavior = 'smooth';
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <main>
+        <Cafeteria />
+        <AboutUs />
+        <Restaurant />
+      </main>
+      <PositionButtons />
     </div>
   );
 }
