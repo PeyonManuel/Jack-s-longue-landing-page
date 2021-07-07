@@ -3,7 +3,7 @@ import { cafeteriaItems } from '../CafeteriaItems';
 
 const Restaurant = () => {
   return (
-    <div class='main-parallax'>
+    <div class='main-parallax cafeteria-parallax'>
       <section class='section parallax parallax-three'>
         <div className='jacks-logo column justify-center'></div>
       </section>

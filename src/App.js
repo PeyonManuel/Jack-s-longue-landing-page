@@ -6,7 +6,12 @@ import Restaurant from './Screens/Restaurant';
 
 function App() {
   useEffect(() => {
-    window.scrollTo(window.screen.width, 0);
+    if ('ontouchstart' in document.documentElement) {
+      document.querySelector('.about-parallax').scrollIntoView();
+    } else {
+      document.querySelector('body').scrollTo(window.screen.width, 0);
+    }
+    document.querySelector('body').style.scrollBehavior = 'smooth';
     document.querySelector('html').style.scrollBehavior = 'smooth';
   }, []);
 

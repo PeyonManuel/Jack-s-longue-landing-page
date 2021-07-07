@@ -5,17 +5,29 @@ const PositionButtons = () => {
     <div className='position-buttons'>
       <button
         onClick={() => {
-          window.scrollTo(0, 0);
+          if ('ontouchstart' in document.documentElement) {
+            document.querySelector('.cafeteria-parallax').scrollIntoView();
+          } else {
+            document.querySelector('body').scrollTo(0, 0);
+          }
         }}
       ></button>
       <button
         onClick={() => {
-          window.scrollTo(window.screen.width, 0);
+          if ('ontouchstart' in document.documentElement) {
+            document.querySelector('.about-parallax').scrollIntoView();
+          } else {
+            document.querySelector('body').scrollTo(window.screen.width, 0);
+          }
         }}
       ></button>
       <button
         onClick={() => {
-          window.scrollTo(window.screen.width * 2, 0);
+          if ('ontouchstart' in document.documentElement) {
+            document.querySelector('.restaurant-parallax').scrollIntoView();
+          } else {
+            document.querySelector('body').scrollTo(window.screen.width * 2, 0);
+          }
         }}
       ></button>
     </div>
