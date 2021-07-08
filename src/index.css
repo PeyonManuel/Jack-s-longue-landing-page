@@ -52,7 +52,7 @@ code {
   width: 0.5rem;
   height: 0.5rem;
 }
-@media (hover: none) {
+@media (max-width: 1440px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 150dpi) and (orientation: portrait) {
   ::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -283,6 +283,11 @@ h6 {
 .food-container.reverse {
   flex-direction: row-reverse;
   justify-content: flex-end;
+}
+@media (max-width: 415px) {
+  .food-container.reverse {
+    flex-direction: column-reverse;
+  }
 }
 .food-details p {
   font-size: 1.8rem;
