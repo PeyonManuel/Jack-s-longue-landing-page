@@ -9,14 +9,28 @@ const AboutUs = () => {
           <div className='jacks-buttons'>
             <button
               onClick={() => {
-                document.querySelector('.cafeteria-parallax').scrollIntoView();
+                if ('ontouchstart' in document.documentElement) {
+                  document
+                    .querySelector('.cafeteria-parallax')
+                    .scrollIntoView();
+                } else {
+                  document.querySelector('body').scrollTo(0, 0);
+                }
               }}
             >
               Cafetería
             </button>
             <button
               onClick={() => {
-                document.querySelector('.restaurant-parallax').scrollIntoView();
+                if ('ontouchstart' in document.documentElement) {
+                  document
+                    .querySelector('.restaurant-parallax')
+                    .scrollIntoView();
+                } else {
+                  document
+                    .querySelector('body')
+                    .scrollTo(window.screen.width * 2, 0);
+                }
               }}
             >
               Restaurant
