@@ -478,6 +478,12 @@ h6 {
     .tower-text {
       flex-direction: row-reverse;
     }
+    .tower-text p {
+      margin-bottom: 0;
+    }
+    .lamp-text p {
+      margin-bottom: 0;
+    }
     .about-img-container.lamp {
       height: 12rem;
       margin-right: 1rem;
