@@ -39,10 +39,10 @@ function App() {
       var yDiff = yDown - yUp;
 
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
-        if (xDiff > 0) {
+        if (xDiff > 9) {
           alert(xDiff);
           console.log('left');
-        } else {
+        } else if (xDiff < -9) {
           alert(xDiff);
           console.log('right');
         }
