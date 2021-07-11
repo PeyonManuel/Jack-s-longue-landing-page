@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/Jacks_logo.ico" />
+    <link href="%PUBLIC_URL%/index.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -18,7 +19,20 @@
     <title>Jack's Longue</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="loading-screen">
+      <img src="Jacks_logo2.png" alt="Jack's Logo" />
+    </div>
+    <script>
+      window.onload = () => {
+        const loadingScreen = document.querySelector('.loading-screen');
+        if (loadingScreen) {
+          loadingScreen.classList.add('hide');
+          setTimeout(() => {
+            loadingScreen.remove();
+          }, 3000);
+        }
+      };
+    </script>
     <div id="root"></div>
   </body>
 </html>

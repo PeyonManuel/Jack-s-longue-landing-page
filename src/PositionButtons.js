@@ -10,6 +10,18 @@ const PositionButtons = () => {
           } else {
             document.querySelector('body').scrollTo(0, 0);
           }
+          var cafeteriaContainers = document.querySelectorAll(
+            '.cafeteria-card-types'
+          );
+          cafeteriaContainers.forEach((container) => {
+            container.classList.add('fade-left');
+          });
+          var restaurantContainers = document.querySelectorAll(
+            '.restaurant-card-types'
+          );
+          restaurantContainers.forEach((container) => {
+            container.classList.remove('fade-right');
+          });
         }}
       ></button>
       <button
@@ -19,6 +31,18 @@ const PositionButtons = () => {
           } else {
             document.querySelector('body').scrollTo(window.screen.width, 0);
           }
+          var cafeteriaContainers = document.querySelectorAll(
+            '.cafeteria-card-types'
+          );
+          cafeteriaContainers.forEach((container) => {
+            container.classList.remove('fade-left');
+          });
+          var restaurantContainers = document.querySelectorAll(
+            '.restaurant-card-types'
+          );
+          restaurantContainers.forEach((container) => {
+            container.classList.remove('fade-right');
+          });
         }}
       ></button>
       <button
@@ -28,6 +52,18 @@ const PositionButtons = () => {
           } else {
             document.querySelector('body').scrollTo(window.screen.width * 2, 0);
           }
+          var restaurantContainers = document.querySelectorAll(
+            '.restaurant-card-types'
+          );
+          restaurantContainers.forEach((container) => {
+            container.classList.add('fade-right');
+          });
+          var cafeteriaContainers = document.querySelectorAll(
+            '.cafeteria-card-types'
+          );
+          cafeteriaContainers.forEach((container) => {
+            container.classList.remove('fade-left');
+          });
         }}
       ></button>
     </div>

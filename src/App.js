@@ -13,6 +13,49 @@ function App() {
     }
     document.querySelector('body').style.scrollBehavior = 'smooth';
     document.querySelector('html').style.scrollBehavior = 'smooth';
+
+    var xDown = null;
+    var yDown = null;
+
+    const getTouches = (evt) => {
+      return evt.touches || evt.originalEvent.touches;
+    };
+
+    const handleTouchStart = (evt) => {
+      const firstTouch = getTouches(evt)[0];
+      xDown = firstTouch.clientX;
+      yDown = firstTouch.clientY;
+    };
+
+    const handleTouchMove = (evt) => {
+      if (!xDown || !yDown) {
+        return;
+      }
+
+      var xUp = evt.touches[0].clientX;
+      var yUp = evt.touches[0].clientY;
+
+      var xDiff = xDown - xUp;
+      var yDiff = yDown - yUp;
+
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 20) {
+          alert(xDiff);
+          console.log('left');
+        } else if (xDiff < -20) {
+          alert(xDiff);
+          console.log('right');
+        }
+      }
+      xDown = null;
+      yDown = null;
+    };
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart, false);
+      document.removeEventListener('touchmove', handleTouchMove, false);
+    };
   }, []);
 
   return (

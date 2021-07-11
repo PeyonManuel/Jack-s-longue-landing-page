@@ -3,14 +3,14 @@ import { cafeteriaItems } from '../CafeteriaItems';
 
 const Restaurant = () => {
   return (
-    <div class='main-parallax cafeteria-parallax'>
-      <section class='section parallax parallax-three'>
+    <div className='main-parallax cafeteria-parallax'>
+      <section className='section parallax parallax-three'>
         <div className='jacks-logo column justify-center'></div>
       </section>
-      <div class='jacks-details'>
+      <div className='jacks-details'>
         <section>
           {cafeteriaItems.map((type, i) => (
-            <div className='card-types'>
+            <div className='cafeteria-card-types' key={type.type}>
               <h2 style={type.clarification && { marginBottom: '0' }}>
                 {type.type}
               </h2>
@@ -18,12 +18,13 @@ const Restaurant = () => {
                 <p style={{ marginTop: '0.5rem' }}>{type.clarification}</p>
               )}
               <div className='card-items'>
-                {type.items.map((item) => (
+                {type.items.map((item, i) => (
                   <div
                     className={
                       'food-container' +
                       (type.type === 'Cervezas' ? ' reverse' : '')
                     }
+                    key={i}
                   >
                     <div className='food-details'>
                       <h3>{item.name}</h3>
