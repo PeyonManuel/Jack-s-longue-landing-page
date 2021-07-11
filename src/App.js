@@ -40,11 +40,13 @@ function App() {
 
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 9) {
-          alert(xDiff);
-          console.log('left');
+          document
+            .querySelector('body')
+            .scrollTo(window.pageXOffset + window.screen.width, 0);
         } else if (xDiff < -9) {
-          alert(xDiff);
-          console.log('right');
+          document
+            .querySelector('body')
+            .scrollTo(window.pageXOffset - window.screen.width, 0);
         }
       }
       xDown = null;
