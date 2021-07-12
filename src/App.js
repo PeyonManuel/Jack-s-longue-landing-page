@@ -49,15 +49,7 @@ function App() {
       var xDiff = xDown - xUp;
       var yDiff = yDown - yUp;
 
-      if (
-        Math.abs(xDiff) > Math.abs(yDiff) &&
-        document.body.scrollLeft %
-          (getMobileOperatingSystem() === 'iOS' &&
-          window.screen.height < window.screen.width
-            ? window.screen.height
-            : window.screen.width) ===
-          0
-      ) {
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 0) {
           if (
             document.body.scrollLeft + window.screen.width ===
