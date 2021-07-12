@@ -121,11 +121,17 @@ function App() {
       xDown = null;
       yDown = null;
     };
-    document.addEventListener('touchstart', handleTouchStart, false);
-    document.addEventListener('touchmove', handleTouchMove, false);
+    window.onload(() => {
+      document.addEventListener('touchstart', handleTouchStart, false);
+      document.addEventListener('touchmove', handleTouchMove, false);
+    });
     const goToAboutUs = (event) => {
       setTimeout(() => {
-        document.querySelector('body').scrollTo(window.screen.width, 0);
+        if ('ontouchstart' in document.documentElement) {
+          document.querySelector('.about-parallax').scrollIntoView();
+        } else {
+          document.querySelector('body').scrollTo(window.screen.width, 0);
+        }
         var cafeteriaContainers = document.querySelectorAll(
           '.cafeteria-card-types'
         );
