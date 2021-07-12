@@ -3,9 +3,11 @@ import Cafeteria from './Screens/Cafeteria';
 import AboutUs from './Screens/AboutUs';
 import Restaurant from './Screens/Restaurant';
 import PositionButtons from './Components/PositionButtons';
+import smoothscroll from 'smoothscroll-polyfill';
 
 function App() {
   useEffect(() => {
+    smoothscroll.polyfill();
     if ('ontouchstart' in document.documentElement) {
       document.querySelector('.about-parallax').scrollIntoView();
     } else {
@@ -41,7 +43,7 @@ function App() {
         Math.abs(xDiff) > Math.abs(yDiff) &&
         document.body.scrollLeft % window.screen.width === 0
       ) {
-        if (xDiff > 9) {
+        if (xDiff > 0) {
           if (
             document.body.scrollLeft + window.screen.width ===
             window.screen.width * 2
@@ -79,7 +81,7 @@ function App() {
           document
             .querySelector('body')
             .scrollTo(document.body.scrollLeft + window.screen.width, 0);
-        } else if (xDiff < -9) {
+        } else {
           if (document.body.scrollLeft - window.screen.width === 0) {
             var cafeteriaContainers3 = document.querySelectorAll(
               '.cafeteria-card-types'
