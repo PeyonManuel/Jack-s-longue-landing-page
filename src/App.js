@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Cafeteria from './Screens/Cafeteria';
 import AboutUs from './Screens/AboutUs';
-import PositionButtons from './PositionButtons';
 import Restaurant from './Screens/Restaurant';
+import PositionButtons from './Components/PositionButtons';
 
 function App() {
   useEffect(() => {
@@ -121,9 +121,30 @@ function App() {
     };
     document.addEventListener('touchstart', handleTouchStart, false);
     document.addEventListener('touchmove', handleTouchMove, false);
+    const goToAboutUs = (event) => {
+      if ('ontouchstart' in document.documentElement) {
+        document.querySelector('.about-parallax').scrollIntoView();
+      } else {
+        document.querySelector('body').scrollTo(window.screen.width, 0);
+      }
+      var cafeteriaContainers = document.querySelectorAll(
+        '.cafeteria-card-types'
+      );
+      cafeteriaContainers.forEach((container) => {
+        container.classList.remove('fade-left');
+      });
+      var restaurantContainers = document.querySelectorAll(
+        '.restaurant-card-types'
+      );
+      restaurantContainers.forEach((container) => {
+        container.classList.remove('fade-right');
+      });
+    };
+    window.addEventListener('orientationchange');
     return () => {
       document.removeEventListener('touchstart', handleTouchStart, false);
       document.removeEventListener('touchmove', handleTouchMove, false);
+      document.removeEventListener('orientationchange', goToAboutUs, false);
     };
   }, []);
 
