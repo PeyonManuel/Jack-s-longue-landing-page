@@ -107,7 +107,7 @@ const AboutUs = () => {
       </section>
       <div className='jacks-details'>
         <section className='about'>
-          <h1>Bienvenidos a Jack's Longue</h1>
+          <h1>Bienvenidos a Jack's Lounge</h1>
           <div className='whats-longue'>
             <div className='column'>
               <h3 id='longueH3'>
