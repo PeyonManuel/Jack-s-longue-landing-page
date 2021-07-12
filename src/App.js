@@ -127,8 +127,22 @@ function App() {
     });
     const goToAboutUs = (event) => {
       setTimeout(() => {
-        if ('ontouchstart' in document.documentElement) {
-          document.querySelector('.about-parallax').scrollIntoView();
+        const getMobileOperatingSystem = () => {
+          var userAgent =
+            navigator.userAgent || navigator.vendor || window.opera;
+          if (/android/i.test(userAgent)) {
+            return 'Android';
+          }
+          if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return 'iOS';
+          }
+          return 'unknown';
+        };
+        if (
+          window.screen.height < window.screen.width &&
+          getMobileOperatingSystem() === 'iOS'
+        ) {
+          document.querySelector('body').scrollTo(window.screen.height, 0);
         } else {
           document.querySelector('body').scrollTo(window.screen.width, 0);
         }
