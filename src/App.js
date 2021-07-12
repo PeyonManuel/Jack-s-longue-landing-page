@@ -8,6 +8,16 @@ import smoothscroll from 'smoothscroll-polyfill';
 function App() {
   useEffect(() => {
     smoothscroll.polyfill();
+    const getMobileOperatingSystem = () => {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(userAgent)) {
+        return 'Android';
+      }
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return 'iOS';
+      }
+      return 'unknown';
+    };
     if ('ontouchstart' in document.documentElement) {
       document.querySelector('.about-parallax').scrollIntoView();
     } else {
@@ -41,7 +51,12 @@ function App() {
 
       if (
         Math.abs(xDiff) > Math.abs(yDiff) &&
-        document.body.scrollLeft % window.screen.width === 0
+        document.body.scrollLeft %
+          (getMobileOperatingSystem() === 'iOS' &&
+          window.screen.height < window.screen.width
+            ? window.screen.height
+            : window.screen.width) ===
+          0
       ) {
         if (xDiff > 0) {
           if (
@@ -127,17 +142,6 @@ function App() {
     });
     const goToAboutUs = (event) => {
       setTimeout(() => {
-        const getMobileOperatingSystem = () => {
-          var userAgent =
-            navigator.userAgent || navigator.vendor || window.opera;
-          if (/android/i.test(userAgent)) {
-            return 'Android';
-          }
-          if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            return 'iOS';
-          }
-          return 'unknown';
-        };
         if (
           window.screen.height < window.screen.width &&
           getMobileOperatingSystem() === 'iOS'
