@@ -380,6 +380,11 @@ h6 {
   .whats-jacks-1 .img-text-2 {
     margin: 0;
   }
+  .img-text-1,
+  .img-text-2 {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
 }
 @media (max-width: 760px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 150dpi) and (orientation: portrait) {
   .whats-longue {
