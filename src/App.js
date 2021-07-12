@@ -122,25 +122,23 @@ function App() {
     document.addEventListener('touchstart', handleTouchStart, false);
     document.addEventListener('touchmove', handleTouchMove, false);
     const goToAboutUs = (event) => {
-      if ('ontouchstart' in document.documentElement) {
-        document.querySelector('.about-parallax').scrollIntoView();
-      } else {
+      setTimeout(() => {
         document.querySelector('body').scrollTo(window.screen.width, 0);
-      }
-      var cafeteriaContainers = document.querySelectorAll(
-        '.cafeteria-card-types'
-      );
-      cafeteriaContainers.forEach((container) => {
-        container.classList.remove('fade-left');
-      });
-      var restaurantContainers = document.querySelectorAll(
-        '.restaurant-card-types'
-      );
-      restaurantContainers.forEach((container) => {
-        container.classList.remove('fade-right');
-      });
+        var cafeteriaContainers = document.querySelectorAll(
+          '.cafeteria-card-types'
+        );
+        cafeteriaContainers.forEach((container) => {
+          container.classList.remove('fade-left');
+        });
+        var restaurantContainers = document.querySelectorAll(
+          '.restaurant-card-types'
+        );
+        restaurantContainers.forEach((container) => {
+          container.classList.remove('fade-right');
+        });
+      }, 500);
     };
-    window.addEventListener('orientationchange');
+    window.addEventListener('orientationchange', goToAboutUs);
     return () => {
       document.removeEventListener('touchstart', handleTouchStart, false);
       document.removeEventListener('touchmove', handleTouchMove, false);
