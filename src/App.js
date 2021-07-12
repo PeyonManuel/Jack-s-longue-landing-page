@@ -3,21 +3,9 @@ import Cafeteria from './Screens/Cafeteria';
 import AboutUs from './Screens/AboutUs';
 import Restaurant from './Screens/Restaurant';
 import PositionButtons from './Components/PositionButtons';
-import smoothscroll from 'smoothscroll-polyfill';
 
 function App() {
   useEffect(() => {
-    smoothscroll.polyfill();
-    const getMobileOperatingSystem = () => {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      if (/android/i.test(userAgent)) {
-        return 'Android';
-      }
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return 'iOS';
-      }
-      return 'unknown';
-    };
     if ('ontouchstart' in document.documentElement) {
       document.querySelector('.about-parallax').scrollIntoView();
     } else {
@@ -49,7 +37,10 @@ function App() {
       var xDiff = xDown - xUp;
       var yDiff = yDown - yUp;
 
-      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (
+        Math.abs(xDiff) > Math.abs(yDiff) &&
+        document.body.scrollLeft % window.screen.width === 0
+      ) {
         if (xDiff > 0) {
           if (
             document.body.scrollLeft + window.screen.width ===
@@ -128,20 +119,11 @@ function App() {
       xDown = null;
       yDown = null;
     };
-    window.onload(() => {
-      document.addEventListener('touchstart', handleTouchStart, false);
-      document.addEventListener('touchmove', handleTouchMove, false);
-    });
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
     const goToAboutUs = (event) => {
       setTimeout(() => {
-        if (
-          window.screen.height < window.screen.width &&
-          getMobileOperatingSystem() === 'iOS'
-        ) {
-          document.querySelector('body').scrollTo(window.screen.height, 0);
-        } else {
-          document.querySelector('body').scrollTo(window.screen.width, 0);
-        }
+        document.querySelector('body').scrollTo(window.screen.width, 0);
         var cafeteriaContainers = document.querySelectorAll(
           '.cafeteria-card-types'
         );
